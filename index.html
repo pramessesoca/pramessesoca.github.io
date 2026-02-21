@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landing Page - Full Page Tabs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scene" aria-hidden="true">
+    <span class="blob blob-one"></span>
+    <span class="blob blob-two"></span>
+    <span class="blob blob-three"></span>
+    <span class="noise"></span>
+  </div>
+
+  <main class="container">
+    <section class="panel">
+      <header class="profile-card reveal">
+        <span class="lux-line" aria-hidden="true"></span>
+        <p class="eyebrow">PERSONAL PROFILE</p>
+        <h1>Header / Informasi Pribadi</h1>
+        <p class="subtitle">Silakan ganti data di bawah ini dengan informasi pribadimu.</p>
+
+        <ul class="info-list">
+          <li><span class="label">Nama Lengkap</span><span class="value">[Nama Kamu]</span></li>
+          <li><span class="label">Lokasi</span><span class="value">Indonesia</span></li>
+          <li><span class="label">Email Profesional</span><span class="value">emailkamu@contoh.com</span></li>
+          <li><span class="label">LinkedIn / GitHub / Portfolio</span><span class="value">linkedin.com/in/username | github.com/username | portofolio.com</span></li>
+          <li><span class="label">Nomor HP (opsional)</span><span class="value">+62xxxxxxxxxxx</span></li>
+        </ul>
+      </header>
+
+      <section class="tab-card reveal" aria-label="Peran Profesional">
+        <span class="lux-line" aria-hidden="true"></span>
+        <div class="section-head">
+          <h2>See me as</h2>
+          <p>Pilih tab untuk berpindah peran.</p>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Role tabs">
+          <a class="tab-btn active" href="#junior-web-dev" role="tab" aria-selected="true" aria-controls="tab-web" id="btn-web" data-tab="web">Junior Web Developer</a>
+          <a class="tab-btn" href="#junior-qa-engineer" role="tab" aria-selected="false" aria-controls="tab-qa" id="btn-qa" data-tab="qa">Junior QA Engineer</a>
+          <a class="tab-btn" href="#penetration-tester" role="tab" aria-selected="false" aria-controls="tab-pentest" id="btn-pentest" data-tab="pentest">Penetration Tester</a>
+          <a class="tab-btn" href="#data-entry-clerk" role="tab" aria-selected="false" aria-controls="tab-data" id="btn-data" data-tab="data">Data Entry Clerk</a>
+        </div>
+
+        <div class="tab-panels">
+          <article class="tab-panel active" role="tabpanel" id="tab-content-panel" aria-labelledby="btn-web">
+            <span class="panel-badge">01</span>
+            <h3>Junior Web Developer</h3>
+            <p>Memuat konten tab...</p>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contentPanel = document.getElementById('tab-content-panel');
+    const hashToTab = {
+      'junior-web-dev': 'web',
+      'junior-qa-engineer': 'qa',
+      'penetration-tester': 'pentest',
+      'data-entry-clerk': 'data'
+    };
+    const tabToHash = {
+      web: 'junior-web-dev',
+      qa: 'junior-qa-engineer',
+      pentest: 'penetration-tester',
+      data: 'data-entry-clerk'
+    };
+    const tabToFile = {
+      web: 'junior-web-dev.html',
+      qa: 'junior-qa-engineer.html',
+      pentest: 'penetration-tester.html',
+      data: 'data-entry-clerk.html'
+    };
+    const contentCache = {};
+
+    const loadTabContent = async (target) => {
+      const file = tabToFile[target];
+      if (!file) {
+        return;
+      }
+
+      if (contentCache[file]) {
+        contentPanel.innerHTML = contentCache[file];
+        return;
+      }
+
+      contentPanel.innerHTML = '<p>Memuat konten...</p>';
+      try {
+        const response = await fetch(file);
+        if (!response.ok) {
+          throw new Error(`Gagal memuat ${file}`);
+        }
+
+        const html = await response.text();
+        contentCache[file] = html;
+        contentPanel.innerHTML = html;
+      } catch (error) {
+        contentPanel.innerHTML = '<p>Konten tab gagal dimuat.</p>';
+      }
+    };
+
+    const activateTab = async (target, updateHash = false) => {
+      tabs.forEach((btn) => {
+        const active = btn.dataset.tab === target;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+
+      const activeBtn = document.querySelector(`.tab-btn[data-tab="${target}"]`);
+      if (activeBtn) {
+        contentPanel.setAttribute('aria-labelledby', activeBtn.id);
+      }
+
+      await loadTabContent(target);
+      contentPanel.classList.remove('active');
+      void contentPanel.offsetWidth;
+      contentPanel.classList.add('active');
+
+      if (updateHash && tabToHash[target]) {
+        window.location.hash = tabToHash[target];
+      }
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', async (event) => {
+        event.preventDefault();
+        await activateTab(tab.dataset.tab, true);
+      });
+    });
+
+    const initialHash = window.location.hash.replace('#', '');
+    activateTab(hashToTab[initialHash] || 'web');
+
+    window.addEventListener('hashchange', async () => {
+      const nextHash = window.location.hash.replace('#', '');
+      await activateTab(hashToTab[nextHash] || 'web');
+    });
+  </script>
+</body>
+</html>
+
