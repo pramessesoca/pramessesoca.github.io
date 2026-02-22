@@ -72,11 +72,12 @@
       pentest: 'penetration-tester',
       data: 'data-entry-clerk'
     };
+    const tabVersion = 'v=20260222-01';
     const tabToFile = {
-      web: 'junior-web-dev.html',
-      qa: 'junior-qa-engineer.html',
-      pentest: 'penetration-tester.html',
-      data: 'data-entry-clerk.html'
+      web: `junior-web-dev.html?${tabVersion}`,
+      qa: `junior-qa-engineer.html?${tabVersion}`,
+      pentest: `penetration-tester.html?${tabVersion}`,
+      data: `data-entry-clerk.html?${tabVersion}`
     };
     const contentCache = {};
 
