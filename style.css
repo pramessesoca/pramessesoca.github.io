@@ -524,6 +524,7 @@ h3 {
   margin-bottom: 4px;
 }
 
+
 .experience-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -798,4 +799,5 @@ h3 {
   .stack-logos {
     grid-template-columns: 1fr;
   }
+
 }
