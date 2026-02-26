@@ -26,6 +26,17 @@
   </header>
 
   <main class="container">
+    <section class="top-role-title" aria-label="Role heading" data-active-tab="web">
+      <p class="role-title">See me as</p>
+      <p class="roles-note">Pilih tab untuk berpindah peran.</p>
+      <div class="tabs" role="tablist" aria-label="Role tabs">
+        <a class="tab-btn active" href="#junior-web-dev" role="tab" aria-selected="true" aria-controls="tab-web" id="btn-web" data-tab="web">Junior Web Developer</a>
+        <a class="tab-btn" href="#junior-qa-engineer" role="tab" aria-selected="false" aria-controls="tab-qa" id="btn-qa" data-tab="qa">Junior QA Engineer</a>
+        <a class="tab-btn" href="#penetration-tester" role="tab" aria-selected="false" aria-controls="tab-pentest" id="btn-pentest" data-tab="pentest">Penetration Tester</a>
+        <a class="tab-btn" href="#data-entry-clerk" role="tab" aria-selected="false" aria-controls="tab-data" id="btn-data" data-tab="data">Data Entry Clerk</a>
+      </div>
+    </section>
+
     <section class="panel">
       <header class="profile-card reveal" id="profile">
         <span class="lux-line" aria-hidden="true"></span>
@@ -48,19 +59,8 @@
         </div>
       </header>
 
-      <section class="tab-card reveal" aria-label="Peran Profesional" id="roles">
+      <section class="tab-card reveal" aria-label="Peran Profesional" id="roles" data-active-tab="web">
         <span class="lux-line" aria-hidden="true"></span>
-        <div class="section-head">
-          <h2>See me as</h2>
-          <p>Pilih tab untuk berpindah peran.</p>
-        </div>
-
-        <div class="tabs" role="tablist" aria-label="Role tabs">
-          <a class="tab-btn active" href="#junior-web-dev" role="tab" aria-selected="true" aria-controls="tab-web" id="btn-web" data-tab="web">Junior Web Developer</a>
-          <a class="tab-btn" href="#junior-qa-engineer" role="tab" aria-selected="false" aria-controls="tab-qa" id="btn-qa" data-tab="qa">Junior QA Engineer</a>
-          <a class="tab-btn" href="#penetration-tester" role="tab" aria-selected="false" aria-controls="tab-pentest" id="btn-pentest" data-tab="pentest">Penetration Tester</a>
-          <a class="tab-btn" href="#data-entry-clerk" role="tab" aria-selected="false" aria-controls="tab-data" id="btn-data" data-tab="data">Data Entry Clerk</a>
-        </div>
 
         <div class="tab-panels">
           <article class="tab-panel active" role="tabpanel" id="tab-content-panel" aria-labelledby="btn-web">
@@ -122,6 +122,8 @@
   <script>
     const tabs = document.querySelectorAll('.tab-btn');
     const contentPanel = document.getElementById('tab-content-panel');
+    const rolesSection = document.getElementById('roles');
+    const topRoleTitle = document.querySelector('.top-role-title');
     const hashToTab = {
       'junior-web-dev': 'web',
       'junior-qa-engineer': 'qa',
@@ -179,6 +181,14 @@
       const activeBtn = document.querySelector(`.tab-btn[data-tab="${target}"]`);
       if (activeBtn) {
         contentPanel.setAttribute('aria-labelledby', activeBtn.id);
+      }
+
+      if (rolesSection) {
+        rolesSection.setAttribute('data-active-tab', target);
+      }
+
+      if (topRoleTitle) {
+        topRoleTitle.setAttribute('data-active-tab', target);
       }
 
       await loadTabContent(target);
