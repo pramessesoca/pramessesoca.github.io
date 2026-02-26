@@ -1,0 +1,9 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Redis logo">
+  <rect width="64" height="64" rx="12" fill="#ffffff"/>
+  <g fill="#d82c20">
+    <polygon points="12,20 32,12 52,20 32,28"/>
+    <polygon points="12,30 32,22 52,30 32,38"/>
+    <polygon points="12,40 32,32 52,40 32,48"/>
+  </g>
+  <circle cx="32" cy="30" r="4" fill="#ffffff"/>
+</svg>
