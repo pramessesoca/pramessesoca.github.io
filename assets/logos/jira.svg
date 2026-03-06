@@ -1,0 +1,5 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Jira logo">
+  <rect width="64" height="64" rx="12" fill="#ffffff"/>
+  <path d="M18 16h14a10 10 0 0 1 10 10v22H28a10 10 0 0 1-10-10V16z" fill="#0052cc"/>
+  <path d="M32 16h14v22a10 10 0 0 1-10 10H22V26a10 10 0 0 1 10-10z" fill="#2684ff"/>
+</svg>

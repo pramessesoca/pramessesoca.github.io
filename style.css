@@ -535,6 +535,10 @@ h2 {
   background: #f7efe9;
 }
 
+.qa-env-full {
+  grid-column: 1 / -1;
+}
+
 .stack-logos {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
