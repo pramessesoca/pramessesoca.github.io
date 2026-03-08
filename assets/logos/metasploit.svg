@@ -1,0 +1,5 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Metasploit logo">
+  <rect width="64" height="64" rx="12" fill="#ffffff"/>
+  <path d="M32 12c10 8 14 18 14 27 0 8-4 14-14 21-10-7-14-13-14-21 0-9 4-19 14-27z" fill="#0b4a6f"/>
+  <path d="M32 20c6 5 8 10 8 15 0 5-2 9-8 13-6-4-8-8-8-13 0-5 2-10 8-15z" fill="#38bdf8"/>
+</svg>
