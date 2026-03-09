@@ -1,10 +1,48 @@
 ﻿<!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Landing Page - Full Page Tabs</title>
+  <title>Portfolio - Full Page Tabs</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .top-actions {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.8rem;
+      margin-left: auto;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      gap: 0.4rem;
+      margin-left: 0;
+    }
+
+    .lang-btn {
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: transparent;
+      color: inherit;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+    }
+
+    .lang-btn.active {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.45);
+    }
+
+    @media (max-width: 700px) {
+      .top-actions {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="scene" aria-hidden="true">
@@ -15,66 +53,72 @@
   </div>
 
   <header class="top-nav">
-    <div class="brand">PORTOFOLIO</div>
-    <nav class="menu" aria-label="Primary">
-      <a href="#profile">Home</a>
-      <a href="#roles">Roles</a>
-      <a href="#certs">Certification</a>
-      <a href="#contact">Contact</a>
+    <div class="brand" data-i18n="brand">PORTOFOLIO</div>
+    <nav class="menu" aria-label="Primary" data-i18n-aria-label="menuAria">
+      <a href="#profile" data-i18n="menuHome">Home</a>
+      <a href="#roles" data-i18n="menuRoles">Roles</a>
+      <a href="#certs" data-i18n="menuCerts">Certification</a>
+      <a href="#contact" data-i18n="menuContact">Contact</a>
     </nav>
-    <a class="nav-cta" href="mailto:prameswarasesoca@gmail.com">Email Me!</a>
+    <div class="top-actions">
+      <div class="lang-toggle" role="group" aria-label="Language toggle">
+        <button class="lang-btn active" type="button" data-lang="id">ID</button>
+        <button class="lang-btn" type="button" data-lang="en">EN</button>
+      </div>
+      <a class="nav-cta" href="mailto:prameswarasesoca@gmail.com" data-i18n="emailCta">Email Me!</a>
+    </div>
   </header>
 
   <main class="container">
     <section class="top-role-title" aria-label="Role heading" data-active-tab="web">
-      <p class="role-title">See me as</p>
-      <p class="roles-note">Pilih tab untuk berpindah peran.</p>
-      <div class="tabs" role="tablist" aria-label="Role tabs">
-        <a class="tab-btn active" href="#junior-web-dev" role="tab" aria-selected="true" aria-controls="tab-web" id="btn-web" data-tab="web">Junior Web Developer</a>
-        <a class="tab-btn" href="#junior-qa-engineer" role="tab" aria-selected="false" aria-controls="tab-qa" id="btn-qa" data-tab="qa">Junior QA Engineer</a>
-        <a class="tab-btn" href="#penetration-tester" role="tab" aria-selected="false" aria-controls="tab-pentest" id="btn-pentest" data-tab="pentest">Penetration Tester</a>
-        <a class="tab-btn" href="#data-entry-clerk" role="tab" aria-selected="false" aria-controls="tab-data" id="btn-data" data-tab="data">Data Entry Clerk</a>
+      <p class="role-title" data-i18n="roleTitle">See me as</p>
+      <p class="roles-note" data-i18n="rolesNote">Pilih tab untuk berpindah peran.</p>
+      <div class="tabs" role="tablist" aria-label="Role tabs" data-i18n-aria-label="roleTabsAria">
+        <a class="tab-btn active" href="#junior-web-dev" role="tab" aria-selected="true" aria-controls="tab-web" id="btn-web" data-tab="web" data-i18n="tabWeb">Junior Web Developer</a>
+        <a class="tab-btn" href="#junior-qa-engineer" role="tab" aria-selected="false" aria-controls="tab-qa" id="btn-qa" data-tab="qa" data-i18n="tabQa">Junior QA Engineer</a>
+        <a class="tab-btn" href="#penetration-tester" role="tab" aria-selected="false" aria-controls="tab-pentest" id="btn-pentest" data-tab="pentest" data-i18n="tabPentest">Penetration Tester</a>
+        <a class="tab-btn" href="#data-entry-clerk" role="tab" aria-selected="false" aria-controls="tab-data" id="btn-data" data-tab="data" data-i18n="tabData">Data Entry Clerk</a>
       </div>
     </section>
 
     <section class="panel">
-      <section class="tab-card reveal" aria-label="Peran Profesional" id="roles" data-active-tab="web">
+      <section class="tab-card reveal" aria-label="Peran Profesional" id="roles" data-active-tab="web" data-i18n-aria-label="rolesAria">
         <span class="lux-line" aria-hidden="true"></span>
 
         <div class="tab-panels">
           <article class="tab-panel active" role="tabpanel" id="tab-content-panel" aria-labelledby="btn-web">
             <span class="panel-badge">01</span>
-            <h3>Junior Web Developer</h3>
-            <p>Memuat konten tab...</p>
+            <h3 data-i18n="tabWeb">Junior Web Developer</h3>
+            <p data-i18n="loadingTab">Memuat konten tab...</p>
           </article>
         </div>
       </section>
 
-      <section class="tab-card reveal" aria-label="Sertifikasi dan Course" id="certs">
+      <section class="tab-card reveal" aria-label="Sertifikasi dan Course" id="certs" data-i18n-aria-label="certsAria">
         <span class="lux-line" aria-hidden="true"></span>
         <div class="section-head">
-          <h2>Sertifikasi dan Course</h2>
-          <p>Ringkasan sertifikasi dan pelatihan yang sudah diikuti.</p>
+          <h2 data-i18n="certTitle">Sertifikasi dan Course</h2>
+          <p data-i18n="certDesc">Ringkasan sertifikasi dan pelatihan yang sudah diikuti.</p>
         </div>
 
         <div class="experience-grid">
           <section class="cert-group">
-            <h3>Sertifikasi & Badges</h3>
+            <h3 data-i18n="certBadges">Sertifikasi & Badges</h3>
             <div class="experience-block">
               <ul>
-                <li><strong><a href="https://badges.parchment.com/public/assertions/UQWnK6W7QWmv3QuYgzs9rQ?identity__email=prameswarasesoca%40gmail.com" target="_blank" rel="noopener noreferrer">Postman API Fundamentals Student Expert</a></strong><br /><span class="value">Postman Academy</span><br /><span class="value">Issued 2025</span></li>
-                <li><strong>Junior Penetration Tester</strong><br /><span class="value">Badan Nasional Sertifikasi Profesi</span><br /><span class="value">Issued 2025</span></li>
-                <li><strong>Certified Associate Penetration Tester</strong><br /><span class="value">Hackviser</span><br /><span class="value">On Progress</span></li>
-                <li><strong>Ethical Hacker</strong><br /><span class="value">Cisco</span><br /><span class="value">On Progress</span></li>
+                <li><strong><a href="https://badges.parchment.com/public/assertions/UQWnK6W7QWmv3QuYgzs9rQ?identity__email=prameswarasesoca%40gmail.com" target="_blank" rel="noopener noreferrer">Postman API Fundamentals Student Expert</a></strong><br /><span class="value">Postman Academy</span><br /><span class="value" data-i18n="issued2025a">Issued 2025</span></li>
+                <li><strong>Junior Penetration Tester</strong><br /><span class="value">Badan Nasional Sertifikasi Profesi</span><br /><span class="value" data-i18n="issued2025b">Issued 2025</span></li>
+                <li><strong>Certified Associate Penetration Tester</strong><br /><span class="value">Hackviser</span><br /><span class="value" data-i18n="onProgress1">On Progress</span></li>
+                <li><strong>Ethical Hacker</strong><br /><span class="value">Cisco</span><br /><span class="value" data-i18n="onProgress2">On Progress</span></li>
               </ul>
             </div>
           </section>
           <section class="cert-group">
-            <h3>Course</h3>
+            <h3 data-i18n="course">Course</h3>
             <div class="experience-block">
               <ul>
-                <li><strong><a href="https://www.credly.com/earner/earned/badge/6ce2e8d9-f4c3-4f6b-8cfb-f6970b10e40e" target="_blank" rel="noopener noreferrer">Artificial Intelligence Fundamentals</a></strong><br /><span class="value">IBM SkillsBuild</span><br /><span class="value">Issued Aug 21, 2025</span></li>
-                <li><strong><a href="https://www.credly.com/earner/earned/badge/8e87bc1d-4a2a-4601-9a7a-e68a243ee002" target="_blank" rel="noopener noreferrer">Introduction to Modern AI</a></strong><br /><span class="value">Cisco</span><br /><span class="value">Issued Aug 19, 2025</span></li>
+                <li><strong><a href="https://www.credly.com/earner/earned/badge/6ce2e8d9-f4c3-4f6b-8cfb-f6970b10e40e" target="_blank" rel="noopener noreferrer">Artificial Intelligence Fundamentals</a></strong><br /><span class="value">IBM SkillsBuild</span><br /><span class="value" data-i18n="issuedAug21">Issued Aug 21, 2025</span></li>
+                <li><strong><a href="https://www.credly.com/earner/earned/badge/8e87bc1d-4a2a-4601-9a7a-e68a243ee002" target="_blank" rel="noopener noreferrer">Introduction to Modern AI</a></strong><br /><span class="value">Cisco</span><br /><span class="value" data-i18n="issuedAug19">Issued Aug 19, 2025</span></li>
               </ul>
             </div>
           </section>
@@ -85,22 +129,92 @@
     <section class="stats-bar" id="contact">
       <article class="stat-item">
         <img src="assets/logos/instagram.svg" alt="Instagram" loading="lazy" />
-        <h3>Instagram</h3>
+        <h3 data-i18n="instagram">Instagram</h3>
         <p><a href="https://instagram.com/pramessesoca" target="_blank" rel="noopener noreferrer">@pramessesoca</a></p>
       </article>
       <article class="stat-item">
         <img src="assets/logos/telegram.svg" alt="Telegram" loading="lazy" />
-        <h3>Telegram</h3>
+        <h3 data-i18n="telegram">Telegram</h3>
         <p><a href="https://t.me/pramessesoca" target="_blank" rel="noopener noreferrer">@pramessesoca</a></p>
       </article>
     </section>
   </main>
 
   <script>
+    const translations = {
+      id: {
+        brand: 'PORTOFOLIO',
+        menuAria: 'Navigasi utama',
+        menuHome: 'Beranda',
+        menuRoles: 'Peran',
+        menuCerts: 'Sertifikasi',
+        menuContact: 'Kontak',
+        emailCta: 'Email Saya!',
+        roleTitle: 'Lihat saya sebagai',
+        rolesNote: 'Pilih tab untuk berpindah peran.',
+        roleTabsAria: 'Tab peran',
+        tabWeb: 'Junior Web Developer',
+        tabQa: 'Junior QA Engineer',
+        tabPentest: 'Penetration Tester',
+        tabData: 'Data Entry Clerk',
+        rolesAria: 'Peran Profesional',
+        loadingTab: 'Memuat konten tab...',
+        certsAria: 'Sertifikasi dan Kursus',
+        certTitle: 'Sertifikasi dan Course',
+        certDesc: 'Ringkasan sertifikasi dan pelatihan yang sudah diikuti.',
+        certBadges: 'Sertifikasi & Badges',
+        issued2025a: 'Diterbitkan 2025',
+        issued2025b: 'Diterbitkan 2025',
+        issuedAug21: 'Diterbitkan 21 Agu 2025',
+        issuedAug19: 'Diterbitkan 19 Agu 2025',
+        onProgress1: 'Dalam Proses',
+        onProgress2: 'Dalam Proses',
+        course: 'Kursus',
+        instagram: 'Instagram',
+        telegram: 'Telegram',
+        loading: 'Memuat konten...',
+        loadError: 'Konten tab gagal dimuat.'
+      },
+      en: {
+        brand: 'PORTFOLIO',
+        menuAria: 'Primary navigation',
+        menuHome: 'Home',
+        menuRoles: 'Roles',
+        menuCerts: 'Certifications',
+        menuContact: 'Contact',
+        emailCta: 'Email Me!',
+        roleTitle: 'See me as',
+        rolesNote: 'Select a tab to switch roles.',
+        roleTabsAria: 'Role tabs',
+        tabWeb: 'Junior Web Developer',
+        tabQa: 'Junior QA Engineer',
+        tabPentest: 'Penetration Tester',
+        tabData: 'Data Entry Clerk',
+        rolesAria: 'Professional Roles',
+        loadingTab: 'Loading tab content...',
+        certsAria: 'Certifications and Courses',
+        certTitle: 'Certifications and Courses',
+        certDesc: 'Summary of certifications and training completed.',
+        certBadges: 'Certifications & Badges',
+        issued2025a: 'Issued 2025',
+        issued2025b: 'Issued 2025',
+        issuedAug21: 'Issued Aug 21, 2025',
+        issuedAug19: 'Issued Aug 19, 2025',
+        onProgress1: 'In Progress',
+        onProgress2: 'In Progress',
+        course: 'Courses',
+        instagram: 'Instagram',
+        telegram: 'Telegram',
+        loading: 'Loading content...',
+        loadError: 'Failed to load tab content.'
+      }
+    };
     const tabs = document.querySelectorAll('.tab-btn');
+    const langButtons = document.querySelectorAll('.lang-btn');
     const contentPanel = document.getElementById('tab-content-panel');
     const rolesSection = document.getElementById('roles');
     const topRoleTitle = document.querySelector('.top-role-title');
+    let currentLang = 'en';
     const hashToTab = {
       'junior-web-dev': 'web',
       'junior-qa-engineer': 'qa',
@@ -113,17 +227,47 @@
       pentest: 'penetration-tester',
       data: 'data-entry-clerk'
     };
-    const tabVersion = 'v=20260225-07';
-    const tabToFile = {
-      web: `junior-web-dev.html?${tabVersion}`,
-      qa: `junior-qa-engineer.html?${tabVersion}`,
-      pentest: `penetration-tester.html?${tabVersion}`,
-      data: `data-entry-clerk.html?${tabVersion}`
-    };
+    const tabVersion = 'v=20260309-01';
     const contentCache = {};
+    const tabToFileByLang = {
+      id: {
+        web: `junior-web-dev.html?${tabVersion}`,
+        qa: `junior-qa-engineer.html?${tabVersion}`,
+        pentest: `penetration-tester.html?${tabVersion}`,
+        data: `data-entry-clerk.html?${tabVersion}`
+      },
+      en: {
+        web: `junior-web-dev-en.html?${tabVersion}`,
+        qa: `junior-qa-engineer-en.html?${tabVersion}`,
+        pentest: `penetration-tester-en.html?${tabVersion}`,
+        data: `data-entry-clerk-en.html?${tabVersion}`
+      }
+    };
+
+    const applyTranslations = (lang) => {
+      const dict = translations[lang] || translations.id;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.dataset.i18n;
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+      document.querySelectorAll('[data-i18n-aria-label]').forEach((el) => {
+        const key = el.dataset.i18nAriaLabel;
+        if (dict[key]) {
+          el.setAttribute('aria-label', dict[key]);
+        }
+      });
+      langButtons.forEach((button) => {
+        const isActive = button.dataset.lang === lang;
+        button.classList.toggle('active', isActive);
+        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+    };
 
     const loadTabContent = async (target) => {
-      const file = tabToFile[target];
+      const file = tabToFileByLang[currentLang][target];
       if (!file) {
         return;
       }
@@ -133,7 +277,7 @@
         return;
       }
 
-      contentPanel.innerHTML = '<p>Memuat konten...</p>';
+      contentPanel.innerHTML = `<p>${translations[currentLang].loading}</p>`;
       try {
         const response = await fetch(file);
         if (!response.ok) {
@@ -144,7 +288,7 @@
         contentCache[file] = html;
         contentPanel.innerHTML = html;
       } catch (error) {
-        contentPanel.innerHTML = '<p>Konten tab gagal dimuat.</p>';
+        contentPanel.innerHTML = `<p>${translations[currentLang].loadError}</p>`;
       }
     };
 
@@ -185,7 +329,24 @@
       });
     });
 
+    const setLanguage = async (lang) => {
+      if (!translations[lang]) {
+        return;
+      }
+      currentLang = lang;
+      applyTranslations(lang);
+      const activeTab = document.querySelector('.tab-btn.active')?.dataset.tab || 'web';
+      await loadTabContent(activeTab);
+    };
+
+    langButtons.forEach((button) => {
+      button.addEventListener('click', async () => {
+        await setLanguage(button.dataset.lang);
+      });
+    });
+
     const initialHash = window.location.hash.replace('#', '');
+    applyTranslations(currentLang);
     activateTab(hashToTab[initialHash] || 'web');
 
     window.addEventListener('hashchange', async () => {
